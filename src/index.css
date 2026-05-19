@@ -1,13 +1,20 @@
+/* index.css */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding: 0;
+  background-color: #E9E6E7 !important; /* Fuerza el fondo gris Urban Slate de tu paleta */
+  font-family: 'Segoe UI', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+/* Forzar que el contenedor raíz de React ocupe toda la pantalla */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
