@@ -6,13 +6,15 @@
 
 ---
 
-## 🌌 Descripción del Proyecto
+<h2 align="center">🌌 Descripción del Proyecto</h2>
 
+<p align="justify">
 Sistema avanzado e integrado para el control de inventario y monitoreo de infraestructura local. Diseñado con una interfaz cyberpunk optimizada para la administración de stock y la auditoría de procesos en tiempo real. Actúa de forma desacoplada para garantizar velocidad, consistencia de datos y un entorno visual de vanguardia.
+</p>
 
 ---
 
-## 🛠️ Características principales
+<h2 align="center">🛠️ Características principales</h2>
 
 * 📊 **Dashboard Central:** Métricas en tiempo real y análisis rápidas mediante gráficos dinámicos del flujo del sistema.
 * 📦 **Control de Inventario:** CRUD functional, estricto e intuitivo para la gestión de productos, marcas y unidades disponibles.
@@ -20,86 +22,108 @@ Sistema avanzado e integrado para el control de inventario y monitoreo de infrae
 
 ---
 
-## 📱 Módulos y Galería del Sistema
+<h2 align="center">📱 Módulos y Galería del Sistema</h2>
 
-### 1. Entorno del Cliente // Catálogo Responsivo
+<h3 align="center">1. Entorno del Cliente // Catálogo Responsivo</h3>
+<p align="justify">
 Yo implementé la interfaz del catálogo público responsivo ("Modo Invitado // Tienda Cliente") optimizada bajo un espectro visual oscuro con acentos neón cian, diseñada específicamente para la exploración fluida de hardware tecnológico en tiempo real. En este módulo, estructuré una visualización en cuadrícula utilizando tarjetas dinámicas e independientes para renderizar la sección de Smartphones Premium, mapeando datos clave desde MariaDB como la marca, el modelo exacto del dispositivo, el precio unitario formateado y el stock crítico disponible en unidades (UDS). Asimismo, incorporé botones interactivos con bordes estilizados para la acción de "Ver Detalles // Adquirir" y un sistema de navegación superior con una pasarela de retorno seguro hacia el módulo de autenticación central (Volver al Login), demostrando la eficiencia técnica de React para manipular layouts limpios, modernos y completamente adaptables a las demandas visuales de la plataforma.
+</p>
 
 <p align="center"><img src="assets/02_tienda_cliente.png" width="85%" alt="Fastech Tienda Cliente Smartphones"></p>
 
 ---
 
-### 2. Panel de Operador Principal (Dashboard)
+<h3 align="center">2. Panel de Operador Principal (Dashboard)</h3>
+<p align="justify">
 Consola central de administración con un menú lateral interactivo fluido, diseñado para que el usuario autenticado alterne rápidamente entre los diferentes entornos de control del sistema. Una vez superada la autenticación, el operador dispone de una suite central con un menú lateral fluido para alternar instantáneamente entre los diferentes entornos de control del sistema.
+</p>
 
 <p align="center"><img src="assets/03_control_center.png" width="85%" alt="Fastech Control Center Principal"></p>
 
 ---
 
-### 3. Sistema de Analíticas Globales // Flujo de Ventas
+<h3 align="center">3. Sistema de Analíticas Globales // Flujo de Ventas</h3>
+<p align="justify">
 Componente visual estadístico integrado en el dashboard que representa el rendimiento comercial, auditoría de transacciones y el flujo de ingresos brutos del sistema mediante gráficos dinámicos en el frontend.
+</p>
 
 <p align="center"><img src="assets/04_analiticas_ventas.png" width="85%" alt="Rendimiento de Ventas Brutas"></p>
 
 ---
 
-### 4. Sistema de Analíticas Globales // Distribución de Almacén
+<h3 align="center">4. Sistema de Analíticas Globales // Distribución de Almacén</h3>
+<p align="justify">
 Gráfico estadístico interactivo que analiza el volumen físico y la distribución del stock de hardware en tiempo real, basándose directamente en los registros y consultas relacionales de MariaDB.
+</p>
 
 <p align="center"><img src="assets/05_analiticas_stock.png" width="85%" alt="Distribución de Stock en MariaDB"></p>
 
 ---
 
-### 5. Panel de Control de Inventario (Auditoría Gráfica)
+<h3 align="center">5. Panel de Control de Inventario (Auditoría Gráfica)</h3>
+<p align="justify">
 Segunda sección analítica del centro de mando destinada a la comparación de métricas comerciales y el balance de inventario antes de realizar modificaciones estructurales en las tablas.
+</p>
 
 <p align="center"><img src="assets/04_analiticas_ventas.png" width="85%" alt="Fastech Analíticas Avanzadas de Sistema"></p>
 
 ---
 
-### 6. Consola de Registro General de Existencias
+<h3 align="center">6. Consola de Registro General de Existencias</h3>
+<p align="justify">
 Módulo operativo secundario enfocado en la supervisión visual previa de las tablas relacionales de almacenamiento, asegurando la consistencia antes de los procesos de actualización masiva.
+</p>
 
 <p align="center"><img src="assets/05_analiticas_stock.png" width="85%" alt="Distribución General del Stock"></p>
 
 ---
 
-### 7. Gestión de Almacén (Inventory CRUD)
+<h3 align="center">7. Gestión de Almacén (Inventory CRUD)</h3>
+<p align="justify">
 Formulario interactivo y suite de operaciones dedicada a ejecutar los procesos CRUD (crear, leer, actualizar y eliminar) en el stock físico de componentes informáticos, aplicando validaciones lógicas inmediatas.
+</p>
 
 <p align="center"><img src="assets/06_inventario_tess.png" width="85%" alt="Panel de Control CRUD de Almacén"></p>
 
 ---
 
-### 8. Visualización de Tablas Dinámicas
+<h3 align="center">8. Visualización de Tablas Dinámicas</h3>
+<p align="justify">
 Interfaz estructurada en tablas limpias para listar el hardware guardado. Cuenta con una validación de estado alternativo dinámico que notifica al operador en tiempo real si el almacén está vacío o los filtros de búsqueda no arrojan coincidencias.
+</p>
 
 <p align="center"><img src="assets/07_conttoolmetrmany.png" width="85%" alt="Estructura de Tabla Dinámica de Componentes"></p>
 
 ---
 
-### 9. Configuración del Núcleo (Core Status)
-Módulo de diagnóstico técnico de infraestructura que reporta en tiempo real las métricas vitales del entorno local: el estado del motor de persistencia relacional (ONLINE), el puerto activo del backend (5000) y la latencia actual de red.
+<h3 align="center">9. Configuración del Núcleo (Core Status)</h3>
+<p align="justify">
+Módulo de diagnóstico técnico de infraestructura que reportan en tiempo real las métricas vitales del entorno local: el estado del motor de persistencia relacional (ONLINE), el puerto activo del backend (5000) y la latencia actual de red.
+</p>
 
 <p align="center"><img src="assets/08_commard_client.png" width="85%" alt="Configuración del Estado del Núcleo"></p>
 
 ---
 
-### 10. Perfil Operativo y Selección de Entorno
+<h3 align="center">10. Perfil Operativo y Selección de Entorno</h3>
+<p align="justify">
 Panel de control de usuario que muestra las credenciales del operador en sesión, su nivel de autorización, el temporizador de sesión activa y la suite interactiva de selección de temas estéticos para la interfaz.
+</p>
 
 <p align="center"><img src="assets/09_systems_store.png" width="85%" alt="Configuración del Perfil del Operador"></p>
 
 ---
 
-### 11. Auditoría de Procesos (Live System Logs)
-Consola interactiva integrada directamente en el cliente que simula y renderiza en tiempo real las secuencias de arranque de los módulos, las confirmaciones de red del servidor, los registros de conexiones HTTP y la traza de actividad del entorno de ejecución.
+<h3 align="center">11. Auditoría de Procesos (Live System Logs)</h3>
+<p align="justify">
+Consola interactiva integrada directamente en la interfaz (cliente) que simula y renderiza en tiempo real las secuencias de arranque de los módulos, las confirmaciones de red del servidor, los registros de conexiones HTTP y la traza de actividad del entorno de ejecución.
+</p>
 
 <p align="center"><img src="assets/10_system_logs.png" width="85%" alt="Consola de Logs de Auditoría en Vivo"></p>
 
 ---
 
-## 💻 Stack Tecnológico
+<h2 align="center">💻 Stack Tecnológico</h2>
 
 <table width="100%">
   <thead>
