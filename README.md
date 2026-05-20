@@ -1,15 +1,5 @@
 # 📊 Fastech // CONTROL CENTER
 
-<p align="center">
-  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=fany&backgroundColor=0f172a" width="120" alt="Fastech Logo"/>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/STATUS-OPERATIONAL-06b6d4?style=for-the-badge&logoColor=white" alt="Status Operational">
-  <img src="https://img.shields.io/badge/VERSION-1.0.0-f43f5e?style=for-the-badge&logoColor=white" alt="Version 1.0.0">
-  <img src="https://img.shields.io/badge/ENVIRONMENT-LINUX_/_WSL2-10b981?style=for-the-badge&logoColor=white" alt="Environment Linux">
-</p>
-
 ---
 
 ## 🌌 Descripción del Proyecto
