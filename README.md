@@ -114,16 +114,11 @@ Consola interactiva integrada directamente en la interfaz (cliente) que simula y
 
 ---
 
-<h2 align="center">🚀 Instalación y Clonación</h2>
+<h2 align="center">🚀 Clonación del Proyecto</h2>
 
 <p align="justify">
-Para desplegar este entorno de control de forma local en tu máquina, ejecuta las siguientes instrucciones secuenciales desde tu terminal de Linux:
+Para obtener una copia local de este repositorio, ejecuta el siguiente comando en tu terminal:
 </p>
 
 ```bash
-# Clonar el repositorio oficial del proyecto
 git clone [https://github.com/keniastefanyherr/Fastech.git](https://github.com/keniastefanyherr/Fastech.git)
-
-# Acceder al directorio raíz
-cd Fastech
-
