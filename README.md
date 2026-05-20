@@ -80,7 +80,7 @@ Formulario interactivo y suite de operaciones dedicada a ejecutar los procesos C
 
 <h3 align="center">7. Visualización de Tablas Dinámicas</h3>
 <p align="justify">
-Interfaz estructurada en tablas limpias para listar el hardware guardado. Cuenta con una validación de estado alternativo dinámico que notifica al operador en tiempo real si el almacén está vacío o los filtros de búsqueda no arrojan coincidencias.
+Interfaz estructurada en tablas limpias para listar el hardware guardado en el sistema. Muestra de forma ordenada todos los componentes informáticos recuperados en tiempo real desde MariaDB, permitiendo al operador monitorizar el stock disponible, códigos de barra y especificaciones técnicas de manera clara y centralizada.
 </p>
 
 <p align="center"><img src="assets/07_inventario_tabla_vacia.png" width="85%" alt="Estructura de Tabla Dinámica de Componentes"></p>
