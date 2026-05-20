@@ -114,44 +114,16 @@ Consola interactiva integrada directamente en la interfaz (cliente) que simula y
 
 ---
 
-<h2 align="center">💻 Stack Tecnológico</h2>
+<h2 align="center">🚀 Instalación y Clonación</h2>
 
-<table width="100%">
-  <thead>
-    <tr style="background-color: #1a1a2e; color: #ffffff;">
-      <th align="left" style="padding: 10px;"><b>Componente</b></th>
-      <th align="left" style="padding: 10px;"><b>Tecnología</b></th>
-      <th align="left" style="padding: 10px;"><b>Propósito Técnico</b></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Interfaz</td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;"><code>React.js</code></td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Componentes funcionales, ganchos de estado de interfaz asíncronos y consumo de API.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Gráficas</td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;"><code>Recharts</code></td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Renderizado de métricas en tiempo real para auditoría de ventas e inventario.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Estilos</td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;"><code>CSS3</code></td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Espectro visual en modo oscuro con iluminación neón interactiva (Cian / Magenta).</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Backend</td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;"><code>Node.js / Express</code></td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">API REST encargada del análisis de datos en formato JSON y gestión de rutas.</td>
-    </tr>
-    <tr>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Base de Datos</td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;"><code>MariaDB</code></td>
-      <td style="padding: 10px; border-bottom: 1px solid #333;">Persistencia relacional local estable y control estricto de nulidades y restricciones de stock.</td>
-    </tr>
-  </tbody>
-</table>
+<p align="justify">
+Para desplegar este entorno de control de forma local en tu máquina, ejecuta las siguientes instrucciones secuenciales desde tu terminal de Linux:
+</p>
 
----
-<p align="center"> Diseñado con estética Cyberpunk por <b>fany_cyber</b> - 2026 </p>
+```bash
+# Clonar el repositorio oficial del proyecto
+git clone [https://github.com/keniastefanyherr/Fastech.git](https://github.com/keniastefanyherr/Fastech.git)
+
+# Acceder al directorio raíz
+cd Fastech
+
