@@ -2,16 +2,15 @@
 // src/components/FilaProducto.js
 import React, { useState } from 'react';
 
-export default function FilaProducto({ producto, onEliminar, onActualizar }) {
+export default function FilaProducto({ producto, onEliminar, onActualizar, onComprar, esAdmin = false }) {
   const [editando, setEditando] = useState(false);
   
-  // Estados locales con los valores actuales
+  // Estados locales para la mutación del CRUD en MariaDB
   const [nombre, setNombre] = useState(producto.nombre);
   const [precio, setPrecio] = useState(producto.precio);
   const [stock, setStock] = useState(producto.stock);
 
   const handleGuardar = () => {
-    // Mandamos únicamente los datos modificables para que MariaDB no toque la imagen
     const productoEditado = {
       nombre,
       precio: parseFloat(precio),
@@ -21,18 +20,61 @@ export default function FilaProducto({ producto, onEliminar, onActualizar }) {
     setEditando(false);
   };
 
-  if (editando) {
+  const imagenUrl = `/imagenes/${producto.imagen || 'default.jpg'}`;
+
+  // ==========================================
+  // RENDER EN MODO EDICIÓN (EXCLUSIVO ADMIN CRUD)
+  // ==========================================
+  if (editando && esAdmin) {
     return (
       <tr style={styles.rowEdit}>
-        <td style={styles.td}>
-          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} style={styles.input} />
+        <td style={styles.tdText}>
+          <div style={styles.productCell}>
+            <div style={styles.miniPreview}>
+              <img 
+                src={imagenUrl} 
+                alt={producto.nombre} 
+                style={styles.miniImg} 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.src = 'https://via.placeholder.com/50?text=NO_FILE';
+                }}
+              />
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+              <input 
+                type="text" 
+                value={nombre} 
+                onChange={(e) => setNombre(e.target.value)} 
+                style={styles.input} 
+                placeholder="Nombre del componente"
+              />
+              <span style={styles.subId}>EDITANDO NODO: #{producto.id}</span>
+            </div>
+          </div>
         </td>
+        
         <td style={styles.td}>
-          <input type="number" value={precio} onChange={(e) => setPrecio(e.target.value)} style={styles.input} />
+          <div style={styles.inputWrapper}>
+            <span style={{ color: '#00f0ff', marginRight: '5px', fontFamily: 'monospace' }}>$</span>
+            <input 
+              type="number" 
+              value={precio} 
+              onChange={(e) => setPrecio(e.target.value)} 
+              style={styles.inputNumeric} 
+            />
+          </div>
         </td>
+        
         <td style={styles.td}>
-          <input type="number" value={stock} onChange={(e) => setStock(e.target.value)} style={styles.input} />
+          <input 
+            type="number" 
+            value={stock} 
+            onChange={(e) => setStock(e.target.value)} 
+            style={styles.inputNumeric} 
+          />
         </td>
+        
         <td style={styles.tdActions}>
           <button onClick={handleGuardar} style={styles.btnSave}>GUARDAR</button>
           <button onClick={() => setEditando(false)} style={styles.btnCancel}>CANCELAR</button>
@@ -41,9 +83,9 @@ export default function FilaProducto({ producto, onEliminar, onActualizar }) {
     );
   }
 
-  // Buscamos la imagen en la ruta que elijas
-  const imagenUrl = `/imagenes/${producto.imagen || 'default.jpg'}`;
-
+  // ==========================================
+  // RENDER EN MODO LECTURA (ADMIN CRUD / TIENDA CLIENTE)
+  // ==========================================
   return (
     <tr style={styles.row}>
       <td style={styles.tdText}>
@@ -54,13 +96,8 @@ export default function FilaProducto({ producto, onEliminar, onActualizar }) {
               alt={producto.nombre} 
               style={styles.miniImg} 
               onError={(e) => {
-                // Si no la encuentra en public, intenta buscarla en tu carpeta de assets
                 e.target.onerror = null;
-                try {
-                  e.target.src = require(`../assets/imagenes/${producto.imagen || 'default.jpg'}`);
-                } catch (err) {
-                  e.target.src = 'https://via.placeholder.com/50?text=NO_FILE';
-                }
+                e.target.src = 'https://via.placeholder.com/50?text=NO_FILE';
               }}
             />
           </div>
@@ -81,9 +118,20 @@ export default function FilaProducto({ producto, onEliminar, onActualizar }) {
       </td>
       
       <td style={styles.tdActions}>
-        {/* Simplificación de los nombres de los botones para que no choquen */}
-        <button onClick={() => setEditando(true)} style={styles.btnEdit}>EDITAR</button>
-        <button onClick={() => onEliminar(producto.id)} style={styles.btnDelete}>ELIMINAR</button>
+        {esAdmin ? (
+          <>
+            <button onClick={() => setEditando(true)} style={styles.btnEdit}>EDITAR</button>
+            <button onClick={() => onEliminar(producto.id)} style={styles.btnDelete}>ELIMINAR</button>
+          </>
+        ) : (
+          <button 
+            onClick={() => onComprar && onComprar(producto.id)} 
+            style={producto.stock > 0 ? styles.btnBuy : styles.btnDisabled}
+            disabled={producto.stock <= 0}
+          >
+            {producto.stock > 0 ? 'COMPRAR' : 'AGOTADO'}
+          </button>
+        )}
       </td>
     </tr>
   );
@@ -95,7 +143,7 @@ const styles = {
   td: { padding: '20px 15px' },
   tdText: { padding: '20px 15px', color: '#ffffff' },
   productCell: { display: 'flex', alignItems: 'center', gap: '15px' },
-  miniPreview: { width: '50px', height: '50px', backgroundColor: '#fff', borderRadius: '6px', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '4px', border: '1px solid #1f293d' },
+  miniPreview: { width: '50px', height: '50px', backgroundColor: '#fff', borderRadius: '6px', display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '4px', border: '1px solid #1f293d', flexShrink: 0 },
   miniImg: { maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' },
   mainName: { fontSize: '16px', fontWeight: 'bold', fontFamily: 'sans-serif', color: '#ffffff' },
   subId: { fontSize: '11px', color: '#6b7280', marginTop: '3px', letterSpacing: '1px' },
@@ -105,15 +153,14 @@ const styles = {
   stockBox: { display: 'flex', alignItems: 'center', gap: '10px' },
   ledGreen: { width: '8px', height: '8px', backgroundColor: '#10b981', borderRadius: '50%', boxShadow: '0 0 8px #10b981' },
   ledRed: { width: '8px', height: '8px', backgroundColor: '#ef4444', borderRadius: '50%', boxShadow: '0 0 8px #ef4444' },
-  
-  // Cambios estructurales para evitar que se amontone el texto
-  tdActions: { padding: '20px 15px', display: 'flex', gap: '12px', alignItems: 'center', minWidth: '220px', justifyContent: 'flex-start' },
-  input: { backgroundColor: '#0a0f1d', border: '1px solid #1f293d', color: '#ffffff', padding: '10px 12px', borderRadius: '6px', width: '90%', fontFamily: 'monospace', fontSize: '14px' },
-  
-  // Ajuste de anchos para las versiones simplificadas de 6 letras
+  tdActions: { padding: '20px 15px', display: 'flex', gap: '12px', alignItems: 'center', minWidth: '260px', justifyContent: 'flex-start' },
+  inputWrapper: { display: 'flex', alignItems: 'center' },
+  input: { backgroundColor: '#0a0f1d', border: '1px solid #1f293d', color: '#ffffff', padding: '8px 12px', borderRadius: '6px', width: '90%', fontFamily: 'monospace', fontSize: '14px', outline: 'none' },
+  inputNumeric: { backgroundColor: '#0a0f1d', border: '1px solid #1f293d', color: '#00f0ff', padding: '8px 12px', borderRadius: '6px', width: '80px', fontFamily: 'monospace', fontSize: '14px', outline: 'none', fontWeight: 'bold' },
   btnEdit: { backgroundColor: 'transparent', color: '#38bdf8', border: '1px solid #38bdf8', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', width: '95px', textAlign: 'center', transition: 'all 0.2s' },
   btnDelete: { backgroundColor: 'transparent', color: '#ef4444', border: '1px solid #ef4444', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', width: '95px', textAlign: 'center', transition: 'all 0.2s' },
-  
-  btnSave: { backgroundColor: '#10b981', color: '#0a0f1d', border: 'none', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', width: '95px' },
-  btnCancel: { backgroundColor: 'transparent', color: '#9ca3af', border: '1px solid #374151', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', width: '95px' }
+  btnSave: { backgroundColor: '#10b981', color: '#0a0f1d', border: 'none', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', width: '95px', textAlign: 'center' },
+  btnCancel: { backgroundColor: 'transparent', color: '#9ca3af', border: '1px solid #374151', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', width: '95px', textAlign: 'center' },
+  btnBuy: { backgroundColor: '#10b981', color: '#0a0f1d', border: 'none', padding: '10px 16px', borderRadius: '6px', cursor: 'pointer', fontSize: '12px', fontWeight: 'bold', letterSpacing: '1px', width: '120px', textAlign: 'center', transition: 'background 0.2s' },
+  btnDisabled: { backgroundColor: '#1f293d', color: '#6b7280', border: '1px solid #374151', padding: '10px 16px', borderRadius: '6px', cursor: 'not-allowed', fontSize: '12px', fontWeight: 'bold', width: '120px', textAlign: 'center' }
 };

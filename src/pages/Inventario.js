@@ -1,9 +1,11 @@
+/* eslint-disable */
 // src/pages/Inventario.js
 import React, { useState, useEffect } from 'react';
 import Formulario from '../components/Formulario';
 import FilaProducto from '../components/FilaProducto';
 
-export default function Inventario() {
+// Recibimos "props" para gestionar dinámicamente el comportamiento Admin / Cliente
+export default function Inventario(props) {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -25,7 +27,7 @@ export default function Inventario() {
     cargarProductos();
   }, []);
 
-  // 2. CREAR (CREATE): Agregar un nuevo producto desde el formulario
+  // 2. CREAR (CREATE): Agregar un nuevo producto desde el formulario (Solo Admin)
   const handleAgregar = async (nuevoProducto) => {
     try {
       const res = await fetch('http://localhost:5000/productos', {
@@ -42,7 +44,7 @@ export default function Inventario() {
     }
   };
 
-  // 3. ELIMINAR (DELETE): Borrar un producto por su ID
+  // 3. ELIMINAR (DELETE): Borrar un producto por su ID (Solo Admin)
   const handleEliminar = async (id) => {
     if (!window.confirm("¿Está seguro de eliminar este componente del núcleo de inventario?")) return;
 
@@ -59,7 +61,7 @@ export default function Inventario() {
     }
   };
 
-  // 4. ACTUALIZAR (UPDATE): Editar los datos de un producto existente
+  // 4. ACTUALIZAR (UPDATE): Editar los datos de un producto existente (Solo Admin)
   const handleActualizar = async (id, productoEditado) => {
     try {
       const res = await fetch(`http://localhost:5000/productos/${id}`, {
@@ -88,40 +90,55 @@ export default function Inventario() {
           <h1 style={styles.bannerTitle}>INVENTORY // CONTROL_PANEL</h1>
           <div style={styles.neonDot}></div>
         </div>
-        <p style={styles.bannerSubtitle}>Añade, edita o elimina componentes del almacén central en tiempo real.</p>
+        <p style={styles.bannerSubtitle}>
+          {props.esAdmin 
+            ? "Añade, edita o elimina componentes del almacén central en tiempo real (Modo Operador)." 
+            : "Explora nuestro catálogo de hardware de vanguardia disponible para adquisición."
+          }
+        </p>
       </div>
 
-      {/* Formulario de Inserción Ampliado */}
-      <div style={styles.panelBlock}>
-        <h3 style={styles.panelTitle}>⚡ REGISTRAR NUEVO COMPONENTE</h3>
-        <div style={styles.formContainer}>
-          <Formulario onAgregar={handleAgregar} />
+      {/* El formulario de registro SOLO lo puede ver el Administrador */}
+      {props.esAdmin && (
+        <div style={styles.panelBlock}>
+          <h3 style={styles.panelTitle}>⚡ REGISTRAR NUEVO COMPONENTE</h3>
+          <div style={styles.formContainer}>
+            <Formulario onAgregar={handleAgregar} />
+          </div>
         </div>
-      </div>
+      )}
 
-      {/* Tabla del CRUD Estilo Cyberpunk */}
+      {/* Tabla del CRUD / Catálogo Estilo Cyberpunk */}
       <div style={styles.panelBlock}>
-        <h3 style={styles.panelTitle}>📦 REGISTROS EN MARIADB</h3>
+        <h3 style={styles.panelTitle}>
+          {props.esAdmin ? "📦 REGISTROS EN MARIADB (CONTROL GLOBAL)" : "🛒 COMPONENTES DISPONIBLES"}
+        </h3>
         <div style={styles.tableWrapper}>
           <table style={styles.table}>
             <thead>
               <tr style={styles.thRow}>
-                <th style={styles.th}>PRODUCTO / IDENTIFICADOR</th>
-                <th style={styles.th}>PRECIO UNITARIO</th>
-                <th style={styles.th}>STOCK DISPONIBLE</th>
-                <th style={styles.thRowActions}>ACCIONES DE CONTROL</th>
+                <th style={styles.thProduct}>PRODUCTO / IDENTIFICADOR</th>
+                {/* COLUMNA COMPLEMENTARIA DE DESCRIPCIÓN */}
+                <th style={styles.thDesc}>DESCRIPCIÓN TÉCNICA</th>
+                <th style={styles.thPrice}>PRECIO UNITARIO</th>
+                <th style={styles.thStock}>STOCK DISPONIBLE</th>
+                <th style={styles.thRowActions}>
+                  {props.esAdmin ? "ACCIONES DE CONTROL" : "ORDENAR HARDWARE"}
+                </th>
               </tr>
             </thead>
             <tbody>
               {productos.length === 0 ? (
                 <tr>
-                  <td colSpan="4" style={styles.emptyCell}>NO HAY REGISTROS EN EL SISTEMA</td>
+                  {/* Cambiado colSpan a 5 para ajustarse a la nueva columna */}
+                  <td colSpan="5" style={styles.emptyCell}>NO HAY REGISTROS EN EL SISTEMA</td>
                 </tr>
               ) : (
                 productos.map(p => (
                   <FilaProducto 
                     key={p.id} 
                     producto={p} 
+                    esAdmin={props.esAdmin}
                     onEliminar={handleEliminar} 
                     onActualizar={handleActualizar} 
                   />
@@ -135,7 +152,7 @@ export default function Inventario() {
   );
 }
 
-// Estilos limpios, futuristas y espaciados
+// Estilos limpios, futuristas y estructurados por columnas fijas
 const styles = {
   container: { padding: '40px 30px', backgroundColor: '#0a0f1d', minHeight: '100vh', fontFamily: "'Courier New', Courier, monospace" },
   loading: { display: 'flex', justifyContent: 'center', alignItems: 'center', height: '70vh', fontSize: '16px', letterSpacing: '4px', color: '#00f0ff', fontWeight: 'bold' },
@@ -148,20 +165,17 @@ const styles = {
   panelBlock: { backgroundColor: '#111827', padding: '25px', borderRadius: '12px', border: '1px solid #1f293d', marginBottom: '35px' },
   panelTitle: { color: '#00f0ff', fontSize: '14px', letterSpacing: '1px', margin: '0 0 20px 0', fontWeight: 'bold' },
   
-  // Solución Formulario Pequeño: Forzar espacio y acomodo de inputs
-  formContainer: {
-    width: '100%',
-    display: 'block',
-    margin: '10px 0'
-  },
-  
+  formContainer: { width: '100%', display: 'block', margin: '10px 0' },
   tableWrapper: { overflowX: 'auto' },
-  table: { width: '100%', borderCollapse: 'collapse', textAlign: 'left' },
+  table: { width: '100%', borderCollapse: 'collapse', textAlign: 'left', tableLayout: 'fixed' },
   thRow: { borderBottom: '2px solid #1f293d' },
-  th: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase' },
   
-  // Solución Botones Encimados: Asegurar un ancho mínimo para la celda de acciones en la cabecera
-  thRowActions: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase', minWidth: '260px' },
+  // Distribución proporcional de anchos en cabecera para evitar deformaciones
+  thProduct: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase', width: '25%' },
+  thDesc: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase', width: '35%' },
+  thPrice: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase', width: '12%' },
+  thStock: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase', width: '13%' },
+  thRowActions: { padding: '15px 12px', color: '#9ca3af', fontSize: '12px', letterSpacing: '1px', textTransform: 'uppercase', width: '15%', minWidth: '240px' },
   
   emptyCell: { padding: '30px', color: '#6b7280', textAlign: 'center', fontSize: '13px', letterSpacing: '2px' }
 };
