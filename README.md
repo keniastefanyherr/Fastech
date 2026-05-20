@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# 📊 Fastech // CONTROL CENTER
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=fany&backgroundColor=0f172a" width="120" alt="Fastech Logo"/>
+</p>
 
-## Available Scripts
+`STATUS: OPERATIONAL // VERSION: 1.0.0`
 
-In the project directory, you can run:
+Sistema avanzado e integrado para el control de inventario y monitoreo de infraestructura local. Diseñado con una interfaz cyberpunk optimizada para la administración de stock y la auditoría de procesos en tiempo real.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Características Principales
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+* 📊 **Dashboard Central:** Métricas en tiempo real y analíticas rápidas del flujo del sistema.
+* 📦 **Control de Inventario:** CRUD funcional e intuitivo para la gestión de productos y stock.
+* ⚙️ **Panel de Configuración:** Centro de mando interactivo para el control del núcleo del sistema y personalización visual dinámica de la interfaz.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🔒 Arquitectura de Seguridad (Acceso Cerrado)
 
-### `npm run build`
+> [!IMPORTANT]
+> **Fastech** está diseñado exclusivamente como una plataforma de control interno y cerrado para infraestructura empresarial. Por motivos de seguridad de inventario y auditoría, el sistema **no cuenta con un registro público de usuarios**. 
+> 
+> El acceso está estrictamente restringido a terminales autorizadas mediante perfiles de administrador centralizados (`CLEARANCE_LEVEL_5`), previniendo alteraciones externas en las tablas de stock.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 💻 Stack Tecnológico
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* **Frontend:** React.js (Componentes funcionales, hooks de estado de interfaz dinámicos).
+* **Estilos:** CSS-in-JS (Espectro visual oscuro con iluminación neón interactiva).
+* **Base de Datos:** MariaDB (Sincronización local estable mediante API dedicada).
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🚀 Instalación Rápida
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clonar el repositorio:
+   ```bash
+   git clone [https://github.com/keniastefanyherr/Fastech.git](https://github.com/keniastefanyherr/Fastech.git)
