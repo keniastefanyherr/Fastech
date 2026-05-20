@@ -1,5 +1,9 @@
 # 📊 Fastech // CONTROL CENTER
 
+<p align="center">
+  <img src="https://api.dicebear.com/7.x/bottts/svg?seed=fany&backgroundColor=0f172a" width="120" alt="Fastech Logo"/>
+</p>
+
 ---
 
 ## 🌌 Descripción del Proyecto
