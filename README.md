@@ -24,7 +24,16 @@ Sistema avanzado e integrado para el control de inventario y monitoreo de infrae
 
 <h2 align="center">📱 Módulos y Galería del Sistema</h2>
 
-<h3 align="center">1. Entorno del Cliente // Catálogo Responsivo</h3>
+<h3 align="center">1. Módulo de Autenticación (Core System Auth)</h3>
+<p align="justify">
+Interfaz de acceso restringido que solicita credenciales cifradas (usuario y contraseña) para validar la identidad del operador antes de permitir el ingreso al panel de control superior, protegiendo la integridad de la persistencia de datos.
+</p>
+
+<p align="center"><img src="assets/01_login_auth.png" width="85%" alt="Fastech Core System Auth"></p>
+
+---
+
+<h3 align="center">2. Entorno del Cliente // Catálogo Responsivo</h3>
 <p align="justify">
 Yo implementé la interfaz del catálogo público responsivo ("Modo Invitado // Tienda Cliente") optimizada bajo un espectro visual oscuro con acentos neón cian, diseñada específicamente para la exploración fluida de hardware tecnológico en tiempo real. En este módulo, estructuré una visualización en cuadrícula utilizando tarjetas dinámicas e independientes para renderizar la sección de Smartphones Premium, mapeando datos clave desde MariaDB como la marca, el modelo exacto del dispositivo, el precio unitario formateado y el stock crítico disponible en unidades (UDS). Asimismo, incorporé botones interactivos con bordes estilizados para la acción de "Ver Detalles // Adquirir" y un sistema de navegación superior con una pasarela de retorno seguro hacia el módulo de autenticación central (Volver al Login), demostrando la eficiencia técnica de React para manipular layouts limpios, modernos y completamente adaptables a las demandas visuales de la plataforma.
 </p>
@@ -33,7 +42,7 @@ Yo implementé la interfaz del catálogo público responsivo ("Modo Invitado // 
 
 ---
 
-<h3 align="center">2. Panel de Operador Principal (Dashboard)</h3>
+<h3 align="center">3. Panel de Operador Principal (Dashboard)</h3>
 <p align="justify">
 Consola central de administración con un menú lateral interactivo fluido, diseñado para que el usuario autenticado alterne rápidamente entre los diferentes entornos de control del sistema. Una vez superada la autenticación, el operador dispone de una suite central con un menú lateral fluido para alternar instantáneamente entre los diferentes entornos de control del sistema.
 </p>
@@ -42,7 +51,7 @@ Consola central de administración con un menú lateral interactivo fluido, dise
 
 ---
 
-<h3 align="center">3. Sistema de Analíticas Globales // Flujo de Ventas</h3>
+<h3 align="center">4. Sistema de Analíticas Globales // Flujo de Ventas</h3>
 <p align="justify">
 Componente visual estadístico integrado en el dashboard que representa el rendimiento comercial, auditoría de transacciones y el flujo de ingresos brutos del sistema mediante gráficos dinámicos en el frontend.
 </p>
@@ -51,7 +60,7 @@ Componente visual estadístico integrado en el dashboard que representa el rendi
 
 ---
 
-<h3 align="center">4. Sistema de Analíticas Globales // Distribución de Almacén</h3>
+<h3 align="center">5. Sistema de Analíticas Globales // Distribución de Almacén</h3>
 <p align="justify">
 Gráfico estadístico interactivo que analiza el volumen físico y la distribución del stock de hardware en tiempo real, basándose directamente en los registros y consultas relacionales de MariaDB.
 </p>
@@ -60,61 +69,43 @@ Gráfico estadístico interactivo que analiza el volumen físico y la distribuci
 
 ---
 
-<h3 align="center">5. Panel de Control de Inventario (Auditoría Gráfica)</h3>
+<h3 align="center">6. Gestión de Almacén (Inventory CRUD)</h3>
 <p align="justify">
-Segunda sección analítica del centro de mando destinada a la comparación de métricas comerciales y el balance de inventario antes de realizar modificaciones estructurales en las tablas.
+Formulario interactivo y suite de operaciones dedicada a ejecutar los procesos CRUD (crear, leer, actualizar y eliminar) en el stock físico de componentes informáticos, aplicando validaciones lógicas inmediatas para el registro seguro de nuevos componentes.
 </p>
 
-<p align="center"><img src="assets/04_analiticas_ventas.png" width="85%" alt="Fastech Analíticas Avanzadas de Sistema"></p>
+<p align="center"><img src="assets/06_inventario_crud_panel.png" width="85%" alt="Panel de Control CRUD de Almacén"></p>
 
 ---
 
-<h3 align="center">6. Consola de Registro General de Existencias</h3>
-<p align="justify">
-Módulo operativo secundario enfocado en la supervisión visual previa de las tablas relacionales de almacenamiento, asegurando la consistencia antes de los procesos de actualización masiva.
-</p>
-
-<p align="center"><img src="assets/05_analiticas_stock.png" width="85%" alt="Distribución General del Stock"></p>
-
----
-
-<h3 align="center">7. Gestión de Almacén (Inventory CRUD)</h3>
-<p align="justify">
-Formulario interactivo y suite de operaciones dedicada a ejecutar los procesos CRUD (crear, leer, actualizar y eliminar) en el stock físico de componentes informáticos, aplicando validaciones lógicas inmediatas.
-</p>
-
-<p align="center"><img src="assets/06_inventario_tess.png" width="85%" alt="Panel de Control CRUD de Almacén"></p>
-
----
-
-<h3 align="center">8. Visualización de Tablas Dinámicas</h3>
+<h3 align="center">7. Visualización de Tablas Dinámicas</h3>
 <p align="justify">
 Interfaz estructurada en tablas limpias para listar el hardware guardado. Cuenta con una validación de estado alternativo dinámico que notifica al operador en tiempo real si el almacén está vacío o los filtros de búsqueda no arrojan coincidencias.
 </p>
 
-<p align="center"><img src="assets/07_conttoolmetrmany.png" width="85%" alt="Estructura de Tabla Dinámica de Componentes"></p>
+<p align="center"><img src="assets/07_inventario_tabla_vacia.png" width="85%" alt="Estructura de Tabla Dinámica de Componentes"></p>
 
 ---
 
-<h3 align="center">9. Configuración del Núcleo (Core Status)</h3>
+<h3 align="center">8. Configuración del Núcleo (Core Status)</h3>
 <p align="justify">
-Módulo de diagnóstico técnico de infraestructura que reportan en tiempo real las métricas vitales del entorno local: el estado del motor de persistencia relacional (ONLINE), el puerto activo del backend (5000) y la latencia actual de red.
+Módulo de diagnóstico técnico de infraestructura que reporta en tiempo real las métricas vitales del entorno local: el estado del motor de persistencia relacional (ONLINE), el puerto activo del backend (5000) y la latencia actual de red.
 </p>
 
-<p align="center"><img src="assets/08_commard_client.png" width="85%" alt="Configuración del Estado del Núcleo"></p>
+<p align="center"><img src="assets/08_configuracion_sistema.png" width="85%" alt="Configuración del Estado del Núcleo"></p>
 
 ---
 
-<h3 align="center">10. Perfil Operativo y Selección de Entorno</h3>
+<h3 align="center">9. Perfil Operativo y Selección de Entorno</h3>
 <p align="justify">
-Panel de control de usuario que muestra las credenciales del operador en sesión, su nivel de autorización, el temporizador de sesión activa y la suite interactiva de selección de temas estéticos para la interfaz.
+Panel de control de usuario que muestra las credenciales del operador en sesión, su nivel de autorización, el temporizador de sesión activa y la suite interactiva de selección de temas estéticos para la interfaz bajo el perfil de fany_cyber.
 </p>
 
-<p align="center"><img src="assets/09_systems_store.png" width="85%" alt="Configuración del Perfil del Operador"></p>
+<p align="center"><img src="assets/09_configuracion_perfil.png" width="85%" alt="Configuración del Perfil del Operador"></p>
 
 ---
 
-<h3 align="center">11. Auditoría de Procesos (Live System Logs)</h3>
+<h3 align="center">10. Auditoría de Procesos (Live System Logs)</h3>
 <p align="justify">
 Consola interactiva integrada directamente en la interfaz (cliente) que simula y renderiza en tiempo real las secuencias de arranque de los módulos, las confirmaciones de red del servidor, los registros de conexiones HTTP y la traza de actividad del entorno de ejecución.
 </p>
@@ -161,3 +152,6 @@ Consola interactiva integrada directamente en la interfaz (cliente) que simula y
     </tr>
   </tbody>
 </table>
+
+---
+<p align="center"> Diseñado con estética Cyberpunk por <b>fany_cyber</b> - 2026 </p>
